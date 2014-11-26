@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from mongoengine import connect
 
 from documents import Restaurant
@@ -10,11 +10,9 @@ app.debug = True
 
 @app.route("/")
 def hello():
-    restaurants = Restaurant.objects
-    try:
-        return restaurants[0].name
-    except IndexError:
-       return "no restaurants"
+    restaurant = Restaurant.objects.first()
+
+    return render_template('home.html', restaurant=restaurant)
 
 if __name__ == "__main__":
     app.run()

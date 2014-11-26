@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Restaurant Randomizer</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+
+    <body class="text-center">
+        <h1 class="center-vertically">
+            {% if restaurant %}
+                Go eat at {{ restaurant.name }}!
+            {% else %}
+                No restaurants. You should add one.
+            {% endif %}
+        </h1>
+    </body>
+</html>
