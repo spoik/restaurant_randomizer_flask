@@ -1,0 +1,12 @@
+!!! 5
+html(lang="en")
+    head
+        title Restaurant Randomizer
+        link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css")
+        link(rel="stylesheet" href=url_for('static', filename='css/main.css'))
+    body
+        p.h1.center-vertically.text-center
+            if restaurant
+                | Go eat at #{restaurant.name}.
+            else
+                | No restaurants. You should add one.
