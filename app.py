@@ -13,8 +13,8 @@ app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
 
 @app.route("/")
 def hello():
-    restaurant = Restaurant.objects.first()
-
+    restaurant = Restaurant.random
+    
     return render_template('home.jade', restaurant=restaurant)
 
 if __name__ == "__main__":
