@@ -1,12 +1,10 @@
-!!! 5
-html(lang="en")
-    head
-        title Restaurant Randomizer
-        link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css")
-        link(rel="stylesheet" href=url_for('static', filename='css/main.css'))
-    body
-        p.h1.center-vertically.text-center
+extends base.jade
+
+block main_content
+    div.center-vertically.text-center
+        p.h1
             if restaurant
                 | Go eat at #{restaurant.name}.
             else
                 | No restaurants. You should add one.
+        a(href=url_for('restaurant_details', restaurant_id=restaurant.id)) Gimme the deets!
