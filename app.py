@@ -1,21 +1,31 @@
+import os
+
 from flask import abort, Flask, redirect, render_template, Response, request, url_for
 
 from mongoengine.errors import ValidationError
 
-# from db import db
-# from documents import Restaurant
+from db import db
+from documents import Restaurant
 
 
 app = Flask(__name__)
-app.config['MONGODB_SETTINGS'] = {
+
+mongodb_settings = {
     'db': 'randomizer'
 }
 
+# Try to get the mongolab connection information from the environment.
+try:
+	mongodb_settings['host'] = os.environ['MONGOLAB_URI']
+except KeyError:
+	pass
+
+app.config['MONGODB_SETTINGS'] = mongodb_settings
 app.debug = True
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 # Initialize flask-mongoengine
-# db.init_app(app)
+db.init_app(app)
 
 # Add jade template support
 app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
@@ -23,7 +33,6 @@ app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
 
 @app.route("/")
 def random_restaurant():
-	return "hello world"
 	"""
 	Shows a random restaurant to the user
 	"""
