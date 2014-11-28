@@ -2,8 +2,8 @@ from flask import abort, Flask, redirect, render_template, Response, request, ur
 
 from mongoengine.errors import ValidationError
 
-from db import db
-from documents import Restaurant
+# from db import db
+# from documents import Restaurant
 
 
 app = Flask(__name__)
@@ -15,7 +15,7 @@ app.debug = True
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 # Initialize flask-mongoengine
-db.init_app(app)
+# db.init_app(app)
 
 # Add jade template support
 app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
@@ -23,6 +23,7 @@ app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
 
 @app.route("/")
 def random_restaurant():
+	return "hello world"
 	"""
 	Shows a random restaurant to the user
 	"""
