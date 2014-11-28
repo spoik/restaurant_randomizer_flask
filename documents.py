@@ -1,9 +1,11 @@
 import random
 
-from mongoengine import document, fields
+from mongoengine import fields
 from mongoengine.queryset import queryset_manager
 
-class Restaurant(document.Document):
+from db import db
+
+class Restaurant(db.Document):
     name = fields.StringField(required=True, max_length=200)
 
     @queryset_manager
