@@ -1,0 +1,18 @@
+extends base
+
+block main_content
+	.container
+		h1 Add a Restaurant
+
+		if message
+			p.text-success #{message}
+		form.form(method="post")
+			#{form.csrf_token}
+
+			if form.errors.name
+				p.text-danger #{form.errors.name.0}
+
+			div
+				#{form.name.label}
+				#{form.name}
+			input(type="submit")
