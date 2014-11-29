@@ -6,5 +6,6 @@ block main_content
             if restaurant
                 | Go eat at #{restaurant.name}.
             else
-                | No restaurants. You should add one.
+                | No restaurants. You should 
+                a(href=url_for('restaurant_create')) add one.
         a(href=url_for('restaurant_details', restaurant_id=restaurant.id)) Gimme the deets!
