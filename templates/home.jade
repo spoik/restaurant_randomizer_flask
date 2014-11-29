@@ -4,7 +4,7 @@ block main_content
     div.center-vertically.text-center
         p.h1
             if restaurant
-                | Go eat at #{restaurant.name}.
+                | Get some #{restaurant.name}.
             else
                 | No restaurants. You should 
                 a(href=url_for('restaurant_create')) add one.
