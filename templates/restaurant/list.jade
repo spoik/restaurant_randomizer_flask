@@ -1,0 +1,27 @@
+extends base.jade
+
+block main_content
+    .container
+        h1 Restaurants
+
+        table.table.table-striped
+            thead
+                tr
+                    th Name
+                    th Actions
+            tbody
+                for restaurant in restaurants
+                    tr
+                        td
+                            a(href=url_for('restaurant_details', restaurant_id=restaurant.id))
+                                | #{restaurant.name}
+                        td
+                            a.text-danger(href=url_for('restaurant_delete', restaurant_id=restaurant.id) title="Remove restaurant")
+                                span.glyphicon.glyphicon-remove
+        p
+            a.btn.btn-primary(href=url_for('restaurant_create')) Add a restaurant
+
+    script(type='text/javascript')
+        jQuery(function() {
+            alert('hi');
+        });

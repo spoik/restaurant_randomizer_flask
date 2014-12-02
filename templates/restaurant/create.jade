@@ -6,6 +6,7 @@ block main_content
 
 		if message
 			p.text-success #{message}
+
 		form.form(method="post")
 			#{form.csrf_token}
 
@@ -15,4 +16,7 @@ block main_content
 			div
 				#{form.name.label}
 				#{form.name}
-			input(type="submit")
+
+			input.btn.btn-primary(type="submit")
+
+			a.btn.btn-default(href=url_for('restaurant_list')) Cancel

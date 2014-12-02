@@ -63,12 +63,28 @@ def restaurant_create():
 
 	# If the user has submitted data and the data is valid
 	if request.method == 'POST' and form.validate():
-		# Save the new restaurant
-		form.save()
-		message = 'Restaurant added!'
-		form = RestaurantForm()
+			# Save the new restaurant
+			form.save()
+			message = 'Restaurant added!'
+			
+			return redirect(url_for('restaurant_list'))
 
 	return render_template('restaurant/create.jade', form=form, message=message)
+
+
+@app.route('/restaurants/')
+def restaurant_list():
+	restaurants = Restaurant.objects
+
+	return render_template('restaurant/list.jade', restaurants=restaurants)
+
+@app.route('/restaurant/delete/<restaurant_id>')
+def restaurant_delete(restaurant_id):
+	restaurant = Restaurant.objects.get_or_404(id=restaurant_id)
+
+	restaurant.delete()
+
+	return redirect(url_for('restaurant_list'))
 
 
 @app.route("/api/restaurants/")
