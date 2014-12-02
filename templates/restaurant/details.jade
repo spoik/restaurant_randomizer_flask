@@ -1,13 +1,12 @@
 extends base.jade
 
 block main_content
-
-	.container.center-vertically
-		div
-			a(href=url_for('random_restaurant')) Gimme another restaurant
-		table.table
-			tr
-				td Name:
-				td #{restaurant.name}
-		p.text-right
-			a(href=url_for('restaurant_create')) Add a restaurant
+    .container
+        h1 #{restaurant.name}
+        table.table
+            tr
+        .row
+            p.col-xs-12.col-sm-6
+                a(href=url_for('random_restaurant')) Gimme another restaurant
+            p.col-xs-12.col-sm-6.text-right
+                a(href=url_for('restaurant_create')) Add a restaurant
