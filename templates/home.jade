@@ -8,4 +8,6 @@ block main_content
             else
                 | No restaurants. You should 
                 a(href=url_for('restaurant_create')) add one.
-        a(href=url_for('restaurant_details', restaurant_id=restaurant.id)) Gimme the deets!
+
+        if restaurant
+            a(href=url_for('restaurant_details', restaurant_id=restaurant.id)) Gimme the deets!
